@@ -1,16 +1,10 @@
 ---
 layout: post
-title: "Understanding PCA I: Football for Dummies"
+title: "A dumb introduction to league football: Using PCA to understand how a football league works"
 date: 2026-05-11
 ---
 
-Welcome to my new blog on GitHub Pages! 
+This blog is for those who have never followed football and know nothing about league football in general. In fact, the less you know about how a football league works, the fewer preconceived notions you'll have about it, and the grander the outcomes of our statistical analysis would sound.
 
-I'm using this space to share my projects, thoughts, and tutorials. 
+But this is not just about football leagues. In the end, this is for those who are (like me) starting to analyze multidimensional data (or more simply, data with a large number of columns).
 
-### What's next?
-* Learn more about Markdown
-* Customize my Jekyll theme
-* Write more posts!
-
-Thanks for reading.
