@@ -28,10 +28,31 @@ The table below shows the outcomes of the 2024-25 season of the Indian Super Lea
 
 | Abbreviation | Meaning |
 | :--- | :--- |
-| **MP** | Matches Played |
-| **W** | Wins |
-| **D** | Draws |
-| **L** | Losses |
-| **GF** | Goals For (Goals scored by the team) |
-| **GA** | Goals Against (Goals scored by opponents) |
-| **GD** | Goal Difference (GF minus GA) |
+| MP | Matches Played |
+| W | Wins |
+| D | Draws |
+| L | Losses |
+| GF | Goals For (Goals scored by the team) |
+| GA | Goals Against (Goals scored by opponents) |
+| GD | Goal Difference (GF minus GA) |
+
+There are 13 teams, and every team played 24 matches. Apart from the MP column (which is the same for every team), we have six columns. Are all of them independent of each other?
+
+Well, at least one is not. GD is a linear combination of GF and GA, and we'll leave it for our further analysis. Thus, the apparent independent data looks like:
+
+| Club                |   W |   D |   L |   GF |   GA |
+|:--------------------|----:|----:|----:|-----:|-----:|
+| Bengaluru FC        |  11 |   5 |   8 |   40 |   31 |
+| Chennaiyin FC       |   7 |   6 |  11 |   34 |   39 |
+| East Bengal FC      |   8 |   4 |  12 |   27 |   33 |
+| FC Goa              |  14 |   6 |   4 |   43 |   27 |
+| Hyderabad FC        |   4 |   6 |  14 |   22 |   47 |
+| Jamshedpur FC       |  12 |   2 |  10 |   37 |   43 |
+| Kerala Blasters FC  |   8 |   5 |  11 |   33 |   37 |
+| Mohammedan SC       |   2 |   7 |  15 |   12 |   43 |
+| Mohun Bagan SG      |  17 |   5 |   2 |   47 |   16 |
+| Mumbai City FC      |   9 |   9 |   6 |   29 |   28 |
+| NorthEast United FC |  10 |   8 |   6 |   46 |   29 |
+| Odisha FC           |   8 |   9 |   7 |   44 |   37 |
+| Punjab FC           |   8 |   4 |  12 |   34 |   38 |
+
