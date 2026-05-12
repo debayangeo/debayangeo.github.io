@@ -70,7 +70,7 @@ Well, at least one is not. GD is a linear combination of GF and GA, and we'll le
 
 Let's look at the numbers in each column. Every column has a different range. For example, W can only have values between 0 and 24 (a team can win none or all of their matches). We can apply the same logic to L and D as well. However, there's no theoretical lower or upper limit to GF and GA. Broadly speaking, they are higher than W, L, or D in our data. Throwing columns with very different value ranges into a *variance-finder* algorithm like PCA confuses it, as it tries to over-value the columns with higher magnitudes. We'll be careful about this and scale the numbers in a way that we're only dealing with "how" they are distributed, and not their actual magnitudes.
 
-The league table now looks like the one below. A value near 0.000 means they were exactly average.
+The league table now looks like the one below. A value near 0.000 means it is close to the league average.
 | Club | W | D | L | GF | GA |
 |:---|---:|---:|---:|---:|---:|
 | Bengaluru FC | 0.510 | -0.433 | -0.286 | 0.567 | -0.433 |
