@@ -10,7 +10,7 @@ This blog post works best for those who know nothing about league football. In f
 
 But this post is not just about football leagues. In the end, it is for those who (like me) are starting to analyze multidimensional data (or, more simply, data with many columns). Let's get started by looking at our data.
 
-### The ISL data
+### The ISL 2024-25 data
 
 The table below shows the outcomes of the 2024-25 season of the Indian Super League (ISL). The teams are arranged in alphabetical order of names.
 
@@ -29,7 +29,6 @@ The table below shows the outcomes of the 2024-25 season of the Indian Super Lea
 | NorthEast United FC |   24 |  10 |   8 |   6 |   46 |   29 |   17 |
 | Odisha FC           |   24 |   8 |   9 |   7 |   44 |   37 |    7 |
 | Punjab FC           |   24 |   8 |   4 |  12 |   34 |   38 |   -4 |
-
 
 | Abbreviation | Meaning |
 | :--- | :--- |
@@ -69,4 +68,4 @@ Well, at least one is not. GD is a linear combination of GF and GA, and we'll le
 | Odisha FC           |   8 |   9 |   7 |   44 |   37 |
 | Punjab FC           |   8 |   4 |  12 |   34 |   38 |
 
-Let's look at the numbers in each column. Every column has a different range. For example, W can only have values between 0 and 24 (a team can win none or all of their matches). We can apply the same logic to L and D as well. However, there's no theoretical lower or upper limit to GF and GA. Broadly speaking, they are higher than W, L, or D in our data. Throwing columns with very different value ranges into a variance-finder algorithm like PCA confuses it, as it tries to over-value the columns with a higher range. We'll be careful about this and scale the numbers in a way that we're only dealing with "how" they are distributed over their range, and not their actual values.
+Let's look at the numbers in each column. Every column has a different range. For example, W can only have values between 0 and 24 (a team can win none or all of their matches). We can apply the same logic to L and D as well. However, there's no theoretical lower or upper limit to GF and GA. Broadly speaking, they are higher than W, L, or D in our data. Throwing columns with very different value ranges into a *variance-finder* algorithm like PCA confuses it, as it tries to over-value the columns with higher magnitudes. We'll be careful about this and scale the numbers in a way that we're only dealing with "how" they are distributed over their range, and not their actual magnitudes.
