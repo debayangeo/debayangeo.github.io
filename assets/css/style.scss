@@ -2,7 +2,12 @@
 ---
 @import "{{ site.theme }}";
 
-/* This targets the main title in the Minimal theme */
-.project-name {
-  color: #964B00; /* Replace this hex code with any color you want! */
+/* Target the linked title specifically in the Minimal theme */
+header h1 a {
+  color: #964B00 !important; 
+}
+
+/* Optional: Change the color when you hover your mouse over it */
+header h1 a:hover {
+  color: #8FBC8F !important; 
 }
