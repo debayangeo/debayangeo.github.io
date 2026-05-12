@@ -4,9 +4,13 @@ title: "A dumb introduction to league football: Using PCA to understand how a fo
 date: 2026-05-11
 ---
 
+### Prologue
+
 This blog post works best for those who know nothing about league football. In fact, the less you know about how a football league works, the fewer preconceived notions you'll have about it, and the grander the outcomes of our statistical analysis would sound.
 
 But this post is not just about football leagues. In the end, it is for those who (like me) are starting to analyze multidimensional data (or, more simply, data with many columns). Let's get started by looking at our data.
+
+### The ISL data
 
 The table below shows the outcomes of the 2024-25 season of the Indian Super League (ISL). The teams are arranged in alphabetical order of names.
 
@@ -37,7 +41,15 @@ The table below shows the outcomes of the 2024-25 season of the Indian Super Lea
 | GA | Goals Against (Goals scored by opponents) |
 | GD | Goal Difference (GF minus GA) |
 
-There are 13 teams, and every team played 24 matches. Apart from the MP column (which is the same for every team), we have six columns. Are all of them independent of each other?
+### The objective
+
+Which team do you think won the ISL? The one with the most W? Or maybe, the one with the least GA? In the end, it all depends on how the league committee ranks the teams. It can also be something non-intuitive (only to those who *know* league football), like the team with the least D would be crowned the champions.
+
+Our goal here is to figure out the ranking criteria that the league committee uses to decide the final standings.
+
+### Preprocessing the data
+
+There are 13 teams, and every team played 24 matches. Apart from the MP column (which is the same across all teams), we have six columns. Are all of them independent of each other?
 
 Well, at least one is not. GD is a linear combination of GF and GA, and we'll leave it for our further analysis. Thus, the (apparently) independent data looks like:
 
