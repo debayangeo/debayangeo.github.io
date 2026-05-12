@@ -37,7 +37,7 @@ The table below shows the outcomes of the 2024-25 season of the Indian Super Lea
 | D | Draws |
 | L | Losses |
 | GF | Goals For (Goals scored by the team) |
-| GA | Goals Against (Goals scored by opponents) |
+| GA | Goals Against (Goals conceded by the team) |
 | GD | Goal Difference (GF minus GA) |
 
 ### The objective
@@ -68,4 +68,22 @@ Well, at least one is not. GD is a linear combination of GF and GA, and we'll le
 | Odisha FC           |   8 |   9 |   7 |   44 |   37 |
 | Punjab FC           |   8 |   4 |  12 |   34 |   38 |
 
-Let's look at the numbers in each column. Every column has a different range. For example, W can only have values between 0 and 24 (a team can win none or all of their matches). We can apply the same logic to L and D as well. However, there's no theoretical lower or upper limit to GF and GA. Broadly speaking, they are higher than W, L, or D in our data. Throwing columns with very different value ranges into a *variance-finder* algorithm like PCA confuses it, as it tries to over-value the columns with higher magnitudes. We'll be careful about this and scale the numbers in a way that we're only dealing with "how" they are distributed over their range, and not their actual magnitudes.
+Let's look at the numbers in each column. Every column has a different range. For example, W can only have values between 0 and 24 (a team can win none or all of their matches). We can apply the same logic to L and D as well. However, there's no theoretical lower or upper limit to GF and GA. Broadly speaking, they are higher than W, L, or D in our data. Throwing columns with very different value ranges into a *variance-finder* algorithm like PCA confuses it, as it tries to over-value the columns with higher magnitudes. We'll be careful about this and scale the numbers in a way that we're only dealing with "how" they are distributed, and not their actual magnitudes.
+
+The league table now looks like this:
+
+| Club | W | D | L | GF | GA |
+|:---|---:|---:|---:|---:|---:|
+| Bengaluru FC | 0.510 | -0.433 | -0.286 | 0.567 | -0.433 |
+| Chennaiyin FC | -0.551 | 0.079 | 0.510 | -0.047 | 0.568 |
+| East Bengal FC | -0.286 | -0.944 | 0.775 | -0.764 | -0.183 |
+| FC Goa | 1.305 | 0.079 | -1.346 | 0.875 | -0.933 |
+| Hyderabad FC | -1.346 | 0.079 | 1.305 | -1.276 | 1.568 |
+| Jamshedpur FC | 0.775 | -1.967 | 0.245 | 0.260 | 1.068 |
+| Kerala Blasters FC | -0.286 | -0.433 | 0.510 | -0.150 | 0.317 |
+| Mohammedan SC | -1.876 | 0.590 | 1.570 | -2.301 | 1.068 |
+| Mohun Bagan SG | 2.101 | -0.433 | -1.876 | 1.284 | -2.309 |
+| Mumbai City FC | -0.020 | 1.613 | -0.816 | -0.559 | -0.808 |
+| NorthEast United FC | 0.245 | 1.102 | -0.816 | 1.182 | -0.683 |
+| Odisha FC | -0.286 | 1.613 | -0.551 | 0.977 | 0.317 |
+| Punjab FC | -0.286 | -0.944 | 0.775 | -0.047 | 0.443 |
