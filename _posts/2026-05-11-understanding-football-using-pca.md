@@ -98,5 +98,6 @@ PC1 depicts the direction along which the cloud is the widest, PC2 depicts the d
 
 Let's first look at how much variation in the ISL data our PCs capture.
 
-<img width="800" height="477" alt="ScreePlot" src="https://github.com/user-attachments/assets/f5d1f417-3a01-40f9-b46c-8a5906791319" />
+<img width="600" height="400" alt="ScreePlot" src="https://github.com/user-attachments/assets/f5d1f417-3a01-40f9-b46c-8a5906791319" />
 
+The first two PCs capture more than 90% of the variation. The leftover variance (< 10%) is probably just statistical noise and doesn't mean anything in real life -- we'll not worry about it a lot.
