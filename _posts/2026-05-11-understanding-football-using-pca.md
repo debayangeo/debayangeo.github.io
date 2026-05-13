@@ -92,6 +92,6 @@ The league table now looks like the one below. A value near 0.000 means it is cl
 
 Imagine a 5D space. It's not easy to imagine one, but we'll have to pretend that we can for a while. Each dimension of this 5D space is defined by an axis that corresponds to a column in our data, and each team is a data point. The idea is to draw lines through the data cloud along which the cloud is the widest, or, in other words, *varies* the most. These lines need to be orthogonal to each other so that they represent variations originating from completely independent factors. We call these lines Principal Components, or simply, PCs. PC1 depicts the direction along which the cloud is the widest, PC2 depicts the direction along which the cloud is the second-widest, and so on. Can you guess the directions along which the first two PCs might be oriented in the image below?
 
-<img width="450" height="600" alt="ChatGPT Image May 13, 2026, 03_35_57 PM" src="https://github.com/user-attachments/assets/9df7a4bf-8cb5-487a-a274-4e257c2f7e67" />
+<img width="600" height="450" alt="ChatGPT Image May 13, 2026, 03_35_57 PM" src="https://github.com/user-attachments/assets/9df7a4bf-8cb5-487a-a274-4e257c2f7e67" />
 
 
