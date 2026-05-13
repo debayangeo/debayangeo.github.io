@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A dumb introduction to league football: Using PCA to understand how a football league works"
+title: "A dumb introduction to league football and PCA"
 date: 2026-05-11
 ---
 
@@ -42,15 +42,15 @@ The table below shows the outcomes of the 2024-25 season of the Indian Super Lea
 
 ### The objective
 
-Which team do you think won the ISL? The one with the most W? Or maybe, the one with the least GA? In the end, it all depends on how the league committee ranks the teams. It can also be something non-intuitive (only to those who *know* league football), like the team with the least D would be crowned the champions.
+Which team do you think won the ISL? The one with the most W? Or maybe, the one with the least GA? In the end, it all depends on how the league committee ranks the teams. It can also be something non-intuitive and bizarre (only to those who *know* league football), like the team with the fewest Ds would be crowned champions.
 
 Our goal here is to figure out the ranking criteria that the league committee uses to decide the final standings.
 
-### Preprocessing the data
+### Getting the data ready
 
 There are 13 teams, and every team played 24 matches. Apart from the MP column (which is the same across all teams), we have six columns. Are all of them independent of each other?
 
-Well, at least one is not. GD is a linear combination of GF and GA, and we'll leave it for our further analysis. Thus, the (apparently) independent data looks like:
+Well, at least one is not. GD is a linear combination of GF and GA, and we'll leave it for our further analysis. Thus, the (apparently) 5D independent data looks like:
 
 | Club                |   W |   D |   L |   GF |   GA |
 |:--------------------|----:|----:|----:|-----:|-----:|
@@ -87,3 +87,9 @@ The league table now looks like the one below. A value near 0.000 means it is cl
 | NorthEast United FC | 0.245 | 1.102 | -0.816 | 1.182 | -0.683 |
 | Odisha FC | -0.286 | 1.613 | -0.551 | 0.977 | 0.317 |
 | Punjab FC | -0.286 | -0.944 | 0.775 | -0.047 | 0.443 |
+
+### PCA-ing
+
+Imagine a 5D space. It's not easy to imagine one, but we'll have to pretend that we can for a while. Each dimension of this 5D space is defined by an axis that corresponds to a column in our data.
+
+<img width="1448" height="1086" alt="ChatGPT Image May 13, 2026, 03_13_11 PM" src="https://github.com/user-attachments/assets/ba6adda4-11d9-4105-809f-b7f9608dcda8" />
