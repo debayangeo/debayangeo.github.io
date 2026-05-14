@@ -102,4 +102,4 @@ Let's first look at how much variation in the ISL data our PCs capture.
 
 The first two PCs capture a little more than 90% of the variation. The leftover variance (< 10%) is probably just statistical noise and doesn't mean anything in real life -- we won't worry about it a lot.
 
-But what are the PCs composed of? To answer this question, we have to take a look at the "loadings" matrix. Loadings can be simply thought of as weights, and every PC can be thought of as a weighted linear combination of the data columns. In fact, this is what PCA does: it calculates these weights automatically from our data.
+But what are the PCs composed of? Every PC can be thought of as a weighted linear combination of the data columns, and loadings can be simply thought of as weights. In fact, this is what PCA does: it calculates these weights automatically from our data. Thus, to answer this question, we have to take a look at the "loadings" matrix.
