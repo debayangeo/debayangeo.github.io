@@ -110,4 +110,9 @@ But every PC can also be thought of as a weighted linear combination of the five
 
 PC1 has a strong positive dependence on W and GF, and a strong negative dependence on L and GA. This is the strongest pattern in the league: on average, teams that score more goals and concede fewer, win more and lose less. Makes sense, right? PC1 discovers this pattern and clumps all of these four columns into a single PC.
 
-PC2 is heavily dominated by D, the only major leftover pattern in the data. In fact, PC2--by nature --- isn't much different from the D column of our dataset.
+PC2 is heavily dominated by D, the only major leftover pattern in the data. In fact, PC2 -- by nature -- isn't much different from the D column of our dataset.
+
+Another cool way to look at the relationship between the PCs and their loadings is the biplot. The smaller the angle between the lines, the more positively correlated they are. Interestingly, L and GA are even more positively correlated than W and GF. As the angle increases to 90°, the correlation drops to zero. For example, GF and D are at about 90° to each other, and aren't correlated. As we go past 90°, the negative (or opposite) correlation goes up. Lines opposite to each other (or, in other words, at an angle of 180°) are perfectly negatively correlated. In our data, teams that win more lose less.
+
+<img width="3557" height="2371" alt="LoadingsBiplot" src="https://github.com/user-attachments/assets/d8e7eaec-4ab0-472f-bbaf-098615da1f19" />
+
