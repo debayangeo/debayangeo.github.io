@@ -114,4 +114,4 @@ PC2 is heavily dominated by D, the only major leftover pattern in the data. In f
 
 Another cool way to look at the mutual relationship between the columns, as well as their relationship to the PCs, is the biplot. The smaller the angle between the lines, the more positively correlated they are. Interestingly, L and GA are even more positively correlated than W and GF. As the angle increases to 90°, the correlation drops to zero. For example, GF and D are at about 90° and aren't correlated. As we go past 90°, the negative (or opposite) correlation goes up. Lines opposite to each other (or, in other words, at an angle of 180°) are perfectly negatively correlated. In our data, teams that win more lose less. Also note that the D arrow is aligned along PC2 and almost perpendicular to PC1; the others are aligned along PC1 but perpendicular to PC2.
 
-<img width="3557" height="2371" alt="LoadingsBiplot" src="https://github.com/user-attachments/assets/d8e7eaec-4ab0-472f-bbaf-098615da1f19" />
+<img width="600" height="400" alt="LoadingsBiplot" src="https://github.com/user-attachments/assets/d8e7eaec-4ab0-472f-bbaf-098615da1f19" />
