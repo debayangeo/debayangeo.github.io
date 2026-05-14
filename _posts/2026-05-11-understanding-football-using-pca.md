@@ -96,7 +96,7 @@ PC1 depicts the direction along which the cloud is the widest, PC2 depicts the d
 
 <img width="600" height="400" alt="ChatGPT Image May 13, 2026, 03_35_57 PM" src="https://github.com/user-attachments/assets/9df7a4bf-8cb5-487a-a274-4e257c2f7e67" />
 
-Let's first look at the amount of variation in the ISL data our PCs capture.
+Let's first look at the amount of variation in the ISL data our PCs capture. You can think of the numbers on the y-axis as R-squared we commonly use in regression models.
 
 <img width="600" height="400" alt="ScreePlot" src="https://github.com/user-attachments/assets/f5d1f417-3a01-40f9-b46c-8a5906791319" />
 
@@ -107,3 +107,7 @@ What are the PCs composed of? Seems like a weird question to ask: they are just 
 But every PC can also be thought of as a weighted linear combination of the five axes (or our five data columns). In fact, this is what PCA does: it calculates these weights automatically from our data. We call these weights loadings. We'll now look at the recipe for the first two PCs.
 
 <img width="2297" height="1768" alt="LoadingsMatrix" src="https://github.com/user-attachments/assets/6df467dc-4e3c-4a83-9660-7c6d5139166f" />
+
+PC1 has a strong positive dependence on W and GF, and a strong negative dependence on L and GA. This is the strongest pattern in the league: on average, teams that score more goals and concede fewer, win more and lose less. Makes sense, right? PC1 discovers this pattern and clumps all of these four columns into a single PC.
+
+PC2 is heavily dominated by D, the only major leftover pattern in the data. In fact, PC2 --- by nature --- isn't much different from the D column of our dataset.
