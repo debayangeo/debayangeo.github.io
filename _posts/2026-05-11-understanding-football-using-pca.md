@@ -94,11 +94,11 @@ Imagine a 5D space. It's not easy to imagine one, but we'll have to pretend that
 
 PC1 depicts the direction along which the cloud is the widest, PC2 depicts the direction along which the cloud is the second-widest, and so on. Can you guess the directions along which the first two PCs might be oriented in the image below?
 
-<img width="600" height="400" alt="ChatGPT Image May 13, 2026, 03_35_57 PM" src="https://github.com/user-attachments/assets/9df7a4bf-8cb5-487a-a274-4e257c2f7e67" />
+<img width="600" height="350" alt="ChatGPT Image May 13, 2026, 03_35_57 PM" src="https://github.com/user-attachments/assets/9df7a4bf-8cb5-487a-a274-4e257c2f7e67" />
 
 Let's first look at the amount of variation in the ISL data our PCs capture. You can think of the numbers on the y-axis as R-squared we commonly use in regression models.
 
-<img width="600" height="400" alt="ScreePlot" src="https://github.com/user-attachments/assets/f5d1f417-3a01-40f9-b46c-8a5906791319" />
+<img width="600" height="350" alt="ScreePlot" src="https://github.com/user-attachments/assets/f5d1f417-3a01-40f9-b46c-8a5906791319" />
 
 The first two PCs capture a little more than 90% of the variation. In other words, most of the patterns in our data can be explained by just two lines, instead of five! The remaining variance (<10%) is likely statistical noise and doesn't mean anything in real life, so we won't worry about it much.
 
@@ -106,7 +106,7 @@ What are the PCs composed of? Seems like a weird question to ask: they are just 
 
 But every PC can also be thought of as a weighted linear combination of the five axes (or our five data columns). In fact, this is what PCA does: it calculates these weights automatically from our data. We call these weights loadings. We'll now look at the recipe for the first two PCs.
 
-<img width="2297" height="1768" alt="LoadingsMatrix" src="https://github.com/user-attachments/assets/6df467dc-4e3c-4a83-9660-7c6d5139166f" />
+<img width="100" height="1768" alt="LoadingsMatrix" src="https://github.com/user-attachments/assets/6df467dc-4e3c-4a83-9660-7c6d5139166f" />
 
 PC1 has a strong positive dependence on W and GF, and a strong negative dependence on L and GA. This is the strongest pattern in the league: on average, teams that score more goals and concede fewer, win more and lose less. Makes sense, right? PC1 discovers this pattern and clumps all of these four columns into a single PC.
 
@@ -114,4 +114,4 @@ PC2 is heavily dominated by D, the only major leftover pattern in the data. In f
 
 Another cool way to look at the mutual relationship between the columns, as well as their relationship to the PCs, is the biplot. The smaller the angle between the lines, the more positively correlated they are. Interestingly, L and GA are even more positively correlated than W and GF. As the angle increases to 90°, the correlation drops to zero. For example, GF and D are at about 90° and aren't correlated. As we go past 90°, the negative (or opposite) correlation goes up. Lines opposite to each other (or, in other words, at an angle of 180°) are perfectly negatively correlated. In our data, teams that win more lose less. Also note that the D arrow is aligned along PC2 and almost perpendicular to PC1; the others are aligned along PC1 but perpendicular to PC2.
 
-<img width="600" height="400" alt="LoadingsBiplot" src="https://github.com/user-attachments/assets/d8e7eaec-4ab0-472f-bbaf-098615da1f19" />
+<img width="600" height="350" alt="LoadingsBiplot" src="https://github.com/user-attachments/assets/d8e7eaec-4ab0-472f-bbaf-098615da1f19" />
