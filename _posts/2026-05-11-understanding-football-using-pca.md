@@ -118,7 +118,7 @@ Another cool geometric way to look at the (i) mutual relationship between the co
 
 ### Predicting the ISL champions
 
-That's what there is to PCA. It finds correlations between the columns of the data (if any) and reduces the number of columns required to describe the major patterns in it. In our case, we have reduced the 5D ISL data to a more manageable 2D data. But do the first two PCs have any predictive ability? Can they predict who the champions were, and who finished at the bottom?
+That's what there is to PCA. It identifies correlations among the columns of the data (if any) and reduces the number of columns needed to describe the major patterns in the data. In our case, we have reduced the 5D ISL data to a more manageable 2D data. But do the first two PCs have any predictive ability? Can they predict who the champions were, and who finished at the bottom?
 
 The short answer is: not necessarily. PCA doesn't know how the league committee ranks the teams.
 
@@ -131,7 +131,7 @@ PC2 score = 0.301W - 0.925D + 0.178L + 0.077GF + 0.128GA
 We get the following table. I've also included the actual ISL standings in the last column. Mohun Bagan SG were the champions of India in the 2024-25 season!
 
 | Standings based on PC1 | Standings based on PC2 | Real standings |
-|:---|:---|:---|
+|:---|:---|---:|
 | Mohun Bagan SG | Jamshedpur FC | Mohun Bagan SG |
 | FC Goa | Punjab FC | FC Goa |
 | NorthEast United FC | East Bengal FC | NorthEast United FC |
@@ -145,3 +145,12 @@ We get the following table. I've also included the actual ISL standings in the l
 | East Bengal FC | NorthEast United FC | Chennaiyin FC |
 | Hyderabad FC | Odisha FC | Hyderabad FC |
 | Mohammedan SC | Mumbai City FC | Mohammedan SC | 
+
+Wow, PC1 is very accurate at predicting the actual standings! Is this a mere coincidence? Yes and no.
+
+The league calculates the points for every team using the following equation (three points for a win, one for a draw, and none for losses or goals scored/conceded):
+
+point = 3W + 1D + 0L + 0GF + 0GA
+
+It also employs a tiebreak when two or more teams have the same points. 
+
