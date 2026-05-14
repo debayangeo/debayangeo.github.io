@@ -122,26 +122,26 @@ That's what there is to PCA. It finds correlations between the columns of the da
 
 The short answer is: not necessarily. PCA doesn't know how the league committee ranks the teams.
 
-Nevertheless, let's calculate the PC scores for each team and arrange them in descending order. More simply, let's evaluate the following equations for each team, and arrange the numbers in descending order:
+Nevertheless, let's calculate each team's PC scores and arrange them in descending order. More simply, let's evaluate the following equations for each team, and arrange the numbers in descending order:
 
 PC1 score = 0.507W + 0.036D - 0.526L + 0.48GF - 0.485GA
 
-PC2 score = 0.031W - 0.925D + 0.178L + 0.077GF + 0.182GA
+PC2 score = 0.301W - 0.925D + 0.178L + 0.077GF + 0.128GA
 
 We get the following table. I've also included the actual ISL standings in the last column. Mohun Bagan SG were the champions of India in the 2024-25 season!
 
 | Standings based on PC1 | Standings based on PC2 | Real standings |
-|:---|:---|---:|
+|:---|:---|:---|
 | Mohun Bagan SG | Jamshedpur FC | Mohun Bagan SG |
 | FC Goa | Punjab FC | FC Goa |
 | NorthEast United FC | East Bengal FC | NorthEast United FC |
-| Bengaluru FC | Kerala Blasters FC | Bengaluru FC |
+| Bengaluru FC | Mohun Bagan SG | Bengaluru FC |
 | Mumbai City FC | Bengaluru FC | Jamshedpur FC |
-| Odisha FC | Hyderabad FC | Mumbai City FC |
-| Jamshedpur FC | Chennaiyin FC | Odisha FC |
-| Kerala Blasters FC | Mohun Bagan SG | Kerala Blasters FC |
-| Punjab FC | Mohammedan SC | Punjab FC |
-| Chennaiyin FC | FC Goa | East Bengal FC |
+| Odisha FC | Kerala Blasters FC | Mumbai City FC |
+| Jamshedpur FC | FC Goa | Odisha FC |
+| Kerala Blasters FC | Chennaiyin FC | Kerala Blasters FC |
+| Punjab FC | Hyderabad FC | Punjab FC |
+| Chennaiyin FC | Mohammedan SC | East Bengal FC |
 | East Bengal FC | NorthEast United FC | Chennaiyin FC |
 | Hyderabad FC | Odisha FC | Hyderabad FC |
 | Mohammedan SC | Mumbai City FC | Mohammedan SC | 
