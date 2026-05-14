@@ -100,11 +100,11 @@ Let's first look at the amount of variation in the ISL data our PCs capture. You
 
 <img width="600" height="350" alt="ScreePlot" src="https://github.com/user-attachments/assets/f5d1f417-3a01-40f9-b46c-8a5906791319" />
 
-The first two PCs capture a little more than 90% of the variation. In other words, most of the patterns in our data can be explained by just two lines, instead of five! The remaining variance (<10%) is likely statistical noise and doesn't mean anything in real life, so we won't worry about it much.
+The first two PCs capture a little more than 90% of the variation. **In other words, most of the patterns in our data can be explained by just two lines, instead of five!** The remaining variance (<10%) is likely statistical noise and doesn't mean anything in real life, so we won't worry about it much.
 
 What are the PCs composed of? Seems like a weird question to ask: they are just lines depicting the direction of maximum variation, right? Why should they be "composed of" anything?
 
-But every PC can also be thought of as a weighted linear combination of the five axes (or our five data columns). In fact, this is what PCA does: it calculates these weights automatically from our data. We call these weights loadings. We'll now look at the recipe for the first two PCs.
+But every PC can also be thought of as a weighted linear combination of the five axes (or our five data columns). In fact, this is what PCA does: it calculates these weights automatically from our data. We call these weights "loadings". We'll now look at the recipe for the first two PCs.
 
 <img width="450" height="350" alt="LoadingsMatrix" src="https://github.com/user-attachments/assets/6df467dc-4e3c-4a83-9660-7c6d5139166f" />
 
@@ -112,6 +112,17 @@ PC1 has a strong positive dependence on W and GF, and a strong negative dependen
 
 PC2 is heavily dominated by D, the only major leftover pattern in the data. In fact, PC2 -- by nature -- isn't much different from the D column of our dataset.
 
-Another cool way to look at the mutual relationship between the columns, as well as their relationship to the PCs, is the biplot. The smaller the angle between the lines, the more positively correlated they are. Interestingly, L and GA are even more positively correlated than W and GF. As the angle increases to 90°, the correlation drops to zero. For example, GF and D are at about 90° and aren't correlated. As we go past 90°, the negative correlation goes up. Lines opposite to each other (or, in other words, at an angle of 180°) are perfectly negatively correlated. In our data, teams that win more lose less. Also note that the D arrow is aligned along PC2 and almost perpendicular to PC1; the others are aligned along PC1 but perpendicular to PC2.
+Another cool geometric way to look at the (i) mutual relationship between the columns, as well as (ii) their relationship to the PCs, is the biplot. The smaller the angle between the lines, the more positively correlated they are. Interestingly, L and GA are even more positively correlated than W and GF. As the angle increases to 90°, the correlation drops to zero. For example, GF and D are at about 90° and aren't correlated. As we go past 90°, the negative correlation goes up. Lines opposite to each other (or, in other words, at an angle of 180°) are perfectly negatively correlated. In our data, teams that win more lose less. Also note that the D arrow is aligned along PC2 and almost perpendicular to PC1; the others are aligned along PC1 but perpendicular to PC2.
 
 <img width="600" height="350" alt="LoadingsBiplot" src="https://github.com/user-attachments/assets/d8e7eaec-4ab0-472f-bbaf-098615da1f19" />
+
+### Predicting the ISL champions
+
+That's what there is to PCA. It finds correlations between the columns of the data (if any) and reduces the number of columns required to describe the major patterns in it. In our case, we have reduced the 5D ISL data to a more manageable 2D data. But do the first two PCs have any predictive ability? Can they predict who the champions were, and who finished at the bottom?
+
+The short answer is: not necessarily. PCA doesn't know how the league committee ranks the teams.
+
+Nevertheless, let's calculate the PC scores for each team and arrange them in descending order of magnitude. More simply, let's evaluate the following equations for each team, and arrange the numbers by magnitude:
+
+PC1 score = 0.507W + 0.036D - 0.526L + 0.48GF - 0.485GA
+PC2 score = 0.031W - 0.925D + 0.178L + 0.077GF + 0.182GA
