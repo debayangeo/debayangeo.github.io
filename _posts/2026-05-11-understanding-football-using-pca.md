@@ -106,7 +106,7 @@ What are the PCs composed of? Seems like a weird question to ask: they are just 
 
 But every PC can also be thought of as a weighted linear combination of the five axes (or our five data columns). In fact, this is what PCA does: it calculates these weights automatically from our data. We call these weights loadings. We'll now look at the recipe for the first two PCs.
 
-<img width="100" height="1768" alt="LoadingsMatrix" src="https://github.com/user-attachments/assets/6df467dc-4e3c-4a83-9660-7c6d5139166f" />
+<img width="500" height="350" alt="LoadingsMatrix" src="https://github.com/user-attachments/assets/6df467dc-4e3c-4a83-9660-7c6d5139166f" />
 
 PC1 has a strong positive dependence on W and GF, and a strong negative dependence on L and GA. This is the strongest pattern in the league: on average, teams that score more goals and concede fewer, win more and lose less. Makes sense, right? PC1 discovers this pattern and clumps all of these four columns into a single PC.
 
