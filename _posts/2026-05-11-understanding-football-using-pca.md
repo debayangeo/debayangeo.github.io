@@ -110,4 +110,4 @@ But every PC can also be thought of as a weighted linear combination of the five
 
 PC1 has a strong positive dependence on W and GF, and a strong negative dependence on L and GA. This is the strongest pattern in the league: on average, teams that score more goals and concede fewer, win more and lose less. Makes sense, right? PC1 discovers this pattern and clumps all of these four columns into a single PC.
 
-PC2 is heavily dominated by D, the only major leftover pattern in the data. In fact, PC2 --- by nature --- isn't much different from the D column of our dataset.
+PC2 is heavily dominated by D, the only major leftover pattern in the data. In fact, PC2--by nature --- isn't much different from the D column of our dataset.
