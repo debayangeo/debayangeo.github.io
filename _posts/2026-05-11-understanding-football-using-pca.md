@@ -96,10 +96,14 @@ PC1 depicts the direction along which the cloud is the widest, PC2 depicts the d
 
 <img width="600" height="400" alt="ChatGPT Image May 13, 2026, 03_35_57 PM" src="https://github.com/user-attachments/assets/9df7a4bf-8cb5-487a-a274-4e257c2f7e67" />
 
-Let's first look at how much variation in the ISL data our PCs capture.
+Let's first look at the amount of variation in the ISL data our PCs capture.
 
 <img width="600" height="400" alt="ScreePlot" src="https://github.com/user-attachments/assets/f5d1f417-3a01-40f9-b46c-8a5906791319" />
 
-The first two PCs capture a little more than 90% of the variation. The leftover variance (< 10%) is probably just statistical noise and doesn't mean anything in real life -- we won't worry about it a lot.
+The first two PCs capture a little more than 90% of the variation. In other words, most of the patterns in our data can be explained by just two lines, instead of five! The remaining variance (<10%) is likely statistical noise and doesn't mean anything in real life, so we won't worry about it much.
 
-But what are the PCs composed of? Every PC can be thought of as a weighted linear combination of the data columns, and loadings can be simply thought of as weights. In fact, this is what PCA does: it calculates these weights automatically from our data. Thus, to answer this question, we have to take a look at the "loadings" matrix.
+What are the PCs composed of? Seems like a weird question to ask: they are just lines depicting the direction of maximum variation, right? Why should they be "composed of" anything?
+
+But every PC can also be thought of as a weighted linear combination of the five axes (or our five data columns). In fact, this is what PCA does: it calculates these weights automatically from our data. We call these weights loadings. We'll now look at the recipe for the first two PCs.
+
+<img width="2297" height="1768" alt="LoadingsMatrix" src="https://github.com/user-attachments/assets/6df467dc-4e3c-4a83-9660-7c6d5139166f" />
