@@ -11,3 +11,10 @@ a {
 a:hover {
   color: #DEB887 !important; 
 }
+
+/* Change the color of the main title inside a blog post */
+section h1 {
+  color: #964B00 !important;
+  border-bottom: 1px solid #eee; /* Optional: adds a subtle line under your title */
+  padding-bottom: 10px;
+}
