@@ -1,10 +1,11 @@
 ---
 layout: post
-title: "A dumb introduction to league football and PCA"
+title: "A dumb introduction to league football and Principal Components Analysis (PCA)"
 date: 2026-05-11
+tags: [pca, football, isl]
 ---
 
-### Intro
+### Prologue
 
 This blog post works best for those who know nothing about league football. In fact, the less you know about how a football league works, the fewer preconceived notions you'll have about it, and the grander the outcomes of our statistical analysis would sound.
 
@@ -96,7 +97,7 @@ PC1 depicts the direction along which the cloud is the widest, PC2 depicts the d
 
 <figure>
   <img width="600" height="350" alt="5DSpace" src="https://github.com/user-attachments/assets/2ed446df-1181-4e27-badc-527bd28bcf7b" />
-  <figcaption align="center"></b> This image is AI generated</figcaption>
+  <figcaption align="center">This image is AI generated</figcaption>
 </figure>
 
 Let's first look at the amount of variation in the ISL data our PCs capture. You can think of the numbers on the y-axis as R-squared we commonly use in regression models.
@@ -170,3 +171,8 @@ The PC1 score equation resembles this ranking criterion. This happens partly for
 But the resemblance is still uncanny. **Why would the direction of maximum variance be such a good predictor of the league standings?**
 
 We've actually figured out the fundamentals of league football. To repeat our observations from the biplot: since the number of matches is fixed, a team winning essentially means a team loses. Also -- on average -- to win games, you need to have a higher GF than GA. Humans deliberately decided to set this pattern as *the* ranking criterion: teams that score more goals and concede fewer, win more and lose less -- and are essentially considered *better*.
+
+### Epilogue
+
+---
+**Tags:** {% for tag in page.tags %} `{{ tag }}` {% endfor %}
