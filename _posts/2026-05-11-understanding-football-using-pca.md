@@ -148,9 +148,21 @@ We get the following table. I've also included the actual ISL standings in the l
 
 Wow, PC1 is very accurate at predicting the actual standings! Is this a mere coincidence? Yes and no.
 
+### Coincidence or not
+
 The league calculates the points for every team using the following equation (three points for a win, one for a draw, and none for losses or goals scored/conceded):
 
 point = 3W + 1D + 0L + 0GF + 0GA
 
-It also employs a tiebreak when two or more teams have the same points. 
+It also employs tiebreaks when two or more teams have the same points. Goal difference (GF minus GA) is taken into account as the first tiebreak. If the teams are still tied, GF is taken into account.
+
+The PC1 score equation resembles this ranking criteria. This happens for two reasons:
+
+*(i)* We've been careful while choosing the columns on which we performed the PCA. If we decided to use data columns such as mean home stadium attendance or mean grass length on the training ground, the PCs wouldn't make sense when it comes to predicting the final standings.
+
+*(ii)* We're lucky that the league uses a linear combination of columns as the ranking criteria. If they used a system that's something like the one below, we'd have run into trouble, as PCA can only linearly combine the columns.
+
+point = 3W^3 + 1D^2 + ...
+
+But why does 
 
