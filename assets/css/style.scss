@@ -2,12 +2,12 @@
 ---
 @import "{{ site.theme }}";
 
-/* Target the linked title specifically in the Minimal theme */
-header h1 a {
+/* This changes ALL clickable links (including the title) to your brown color */
+a {
   color: #964B00 !important; 
 }
 
-/* Optional: Change the color when you hover your mouse over it */
-header h1 a:hover {
+/* This is the hover effect for links */
+a:hover {
   color: #DEB887 !important; 
 }
