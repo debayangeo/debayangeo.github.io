@@ -170,4 +170,4 @@ We've actually figured out the fundamentals of league football. To repeat our ob
 
 By the way, this is us celebrating Mohun Bagan SG's title win:
 
-<img width="600" height="350" alt="MBSG" src="https://github.com/user-attachments/assets/04894d61-b0d1-4f48-a139-a24512ffeb28" />
+<img width="550" height="350" alt="MBSG" src="https://github.com/user-attachments/assets/04894d61-b0d1-4f48-a139-a24512ffeb28" />
