@@ -94,11 +94,14 @@ Imagine a 5D space. It's not easy to imagine one, but we'll have to pretend that
 
 PC1 depicts the direction along which the cloud is the widest, PC2 depicts the direction along which the cloud is the second-widest, and so on. Can you guess the directions along which the first two PCs might be oriented in the image below?
 
-<img width="600" height="350" alt="ChatGPT Image May 13, 2026, 03_35_57 PM" src="https://github.com/user-attachments/assets/9df7a4bf-8cb5-487a-a274-4e257c2f7e67" />
+<figure>
+  <img width="600" height="350" alt="5DSpace" src="https://github.com/user-attachments/assets/2ed446df-1181-4e27-badc-527bd28bcf7b" />
+  <figcaption align="center"></b> This image is AI generated</figcaption>
+</figure>
 
 Let's first look at the amount of variation in the ISL data our PCs capture. You can think of the numbers on the y-axis as R-squared we commonly use in regression models.
 
-<img width="600" height="350" alt="ScreePlot" src="https://github.com/user-attachments/assets/f5d1f417-3a01-40f9-b46c-8a5906791319" />
+<img width="600" height="350" alt="ScreePlot1" src="https://github.com/user-attachments/assets/477237be-7dd3-4202-bb5d-4273c46ce16e" />
 
 The first two PCs capture a little more than 90% of the variation. **In other words, most of the patterns in our data can be explained by just two lines, instead of five!** The remaining variance (<10%) is likely statistical noise and doesn't mean anything in real life, so we won't worry about it much.
 
@@ -106,7 +109,7 @@ What are the PCs composed of? Seems like a weird question to ask: they are just 
 
 But every PC can also be thought of as a weighted linear combination of the five axes (or our five data columns). In fact, this is what PCA does: it calculates these weights automatically from our data. We call these weights "loadings". We'll now look at the recipe for the first two PCs.
 
-<img width="450" height="350" alt="LoadingsMatrix" src="https://github.com/user-attachments/assets/6df467dc-4e3c-4a83-9660-7c6d5139166f" />
+<img width="450" height="350" alt="LoadingsMatrix1" src="https://github.com/user-attachments/assets/5b5ffa4b-066a-407b-b532-38babc0cc36e" />
 
 PC1 has a strong positive dependence on W and GF, and a strong negative dependence on L and GA. This is the strongest pattern in the league: on average, teams that score more goals and concede fewer, win more and lose less (note that the number of matches is fixed). Makes sense, right? PC1 discovers this pattern and clumps all of these four columns into a single PC.
 
@@ -114,7 +117,7 @@ PC2 is heavily dominated by D, the only major leftover pattern in the data. In f
 
 Another cool geometric way to look at the (i) mutual relationship between the columns, as well as (ii) their relationship to the PCs, is the biplot. The smaller the angle between the lines, the more positively correlated they are. Interestingly, L and GA are even more positively correlated than W and GF. As the angle increases to 90°, the correlation drops to zero. For example, GF and D are at about 90° and aren't correlated. As we go past 90°, the negative correlation goes up. Lines opposite to each other (or, in other words, at an angle of 180°) are perfectly negatively correlated. In our data, teams that win more lose less. Also note that the D arrow is aligned along PC2 and almost perpendicular to PC1; the others are aligned along PC1 but perpendicular to PC2.
 
-<img width="600" height="350" alt="LoadingsBiplot" src="https://github.com/user-attachments/assets/d8e7eaec-4ab0-472f-bbaf-098615da1f19" />
+<img width="600" height="350" alt="LoadingsBiplot1" src="https://github.com/user-attachments/assets/350fd335-1f24-43b5-9004-2a116730a671" />
 
 ### Predicting the ISL champions
 
@@ -124,11 +127,11 @@ The short answer is: not necessarily. PCA doesn't know how the league committee 
 
 Nevertheless, let's calculate each team's PC scores and arrange them in descending order. More simply, let's evaluate the following equations for each team, and arrange the numbers in descending order:
 
-PC1 score = 0.507W + 0.036D - 0.526L + 0.480GF - 0.485GA
+*PC1 score = 0.507W + 0.036D - 0.526L + 0.480GF - 0.485GA*
 
-PC2 score = 0.301W - 0.925D + 0.178L + 0.077GF + 0.128GA
+*PC2 score = 0.301W - 0.925D + 0.178L + 0.077GF + 0.128GA*
 
-We get the following table. I've also included the actual ISL standings in the last column. Mohun Bagan SG were the champions of India in the 2024-25 season!
+We get the following table. I've also included the actual ISL standings in the last column. Yes, Mohun Bagan SG were the champions of India in the 2024-25 season!
 
 | Standings based on PC1 | Standings based on PC2 | Real standings |
 |:---|:---|---:|
@@ -152,7 +155,7 @@ Wow, PC1 is very accurate at predicting the actual standings! Is this a mere coi
 
 The league calculates the points for every team using the following equation (three points for a win, one for a draw, and none for losses or goals scored/conceded):
 
-point = 3W + 1D + 0L + 0GF + 0GA
+*point = 3W + 1D + 0L + 0GF + 0GA*
 
 It also employs tiebreaks when two or more teams have the same points. Goal difference (GF minus GA) is the first tiebreak. If the teams are still tied, GF is taken into account.
 
@@ -162,12 +165,8 @@ The PC1 score equation resembles this ranking criterion. This happens partly for
 
 (ii) We're lucky that the league uses a linear combination of columns as the ranking criteria. If they used a system that's something like the one below, we'd have run into trouble, as PCA can only linearly combine the columns.
 
-point = 3W^3 + 1D^2 + ...
+*point = 3W^3 + 1D^2 + ...*
 
-But the resemblance is still uncanny. Why would the direction of maximum variance be such a good predictor of the league standings?
+But the resemblance is still uncanny. **Why would the direction of maximum variance be such a good predictor of the league standings?**
 
-We've actually figured out the fundamentals of league football. To repeat our observations from the biplot: since the number of matches is fixed, more W essentially means fewer L. Also -- on average -- to win games, you need to have a higher GF than GA. Humans deliberately decided to set this pattern as *the* ranking criterion: teams that score more goals and concede fewer, win more and lose less -- and are essentially *better*. We've sort of reverse-engineered this idea.
-
-By the way, this is us celebrating Mohun Bagan SG's title win:
-
-<img width="550" height="350" alt="MBSG" src="https://github.com/user-attachments/assets/04894d61-b0d1-4f48-a139-a24512ffeb28" />
+We've actually figured out the fundamentals of league football. To repeat our observations from the biplot: since the number of matches is fixed, a team winning essentially means a team loses. Also -- on average -- to win games, you need to have a higher GF than GA. Humans deliberately decided to set this pattern as *the* ranking criterion: teams that score more goals and concede fewer, win more and lose less -- and are essentially considered *better*.
