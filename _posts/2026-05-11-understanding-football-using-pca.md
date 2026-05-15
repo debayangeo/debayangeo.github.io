@@ -4,7 +4,7 @@ title: "A dumb introduction to league football and PCA"
 date: 2026-05-11
 ---
 
-### Prologue
+### Intro
 
 This blog post works best for those who know nothing about league football. In fact, the less you know about how a football league works, the fewer preconceived notions you'll have about it, and the grander the outcomes of our statistical analysis would sound.
 
@@ -108,7 +108,7 @@ But every PC can also be thought of as a weighted linear combination of the five
 
 <img width="450" height="350" alt="LoadingsMatrix" src="https://github.com/user-attachments/assets/6df467dc-4e3c-4a83-9660-7c6d5139166f" />
 
-PC1 has a strong positive dependence on W and GF, and a strong negative dependence on L and GA. This is the strongest pattern in the league: on average, teams that score more goals and concede fewer, win more and lose less. Makes sense, right? PC1 discovers this pattern and clumps all of these four columns into a single PC.
+PC1 has a strong positive dependence on W and GF, and a strong negative dependence on L and GA. This is the strongest pattern in the league: on average, teams that score more goals and concede fewer, win more and lose less (note that the number of matches is fixed). Makes sense, right? PC1 discovers this pattern and clumps all of these four columns into a single PC.
 
 PC2 is heavily dominated by D, the only major leftover pattern in the data. In fact, PC2 -- by nature -- isn't much different from the D column of our dataset.
 
@@ -124,7 +124,7 @@ The short answer is: not necessarily. PCA doesn't know how the league committee 
 
 Nevertheless, let's calculate each team's PC scores and arrange them in descending order. More simply, let's evaluate the following equations for each team, and arrange the numbers in descending order:
 
-PC1 score = 0.507W + 0.036D - 0.526L + 0.48GF - 0.485GA
+PC1 score = 0.507W + 0.036D - 0.526L + 0.480GF - 0.485GA
 
 PC2 score = 0.301W - 0.925D + 0.178L + 0.077GF + 0.128GA
 
@@ -146,23 +146,28 @@ We get the following table. I've also included the actual ISL standings in the l
 | Hyderabad FC | Odisha FC | Hyderabad FC |
 | Mohammedan SC | Mumbai City FC | Mohammedan SC | 
 
-Wow, PC1 is very accurate at predicting the actual standings! Is this a mere coincidence? Yes and no.
+Wow, PC1 is very accurate at predicting the actual standings! Is this a mere coincidence? Yes and no. We were both careful and lucky.
 
-### Coincidence or not
+### Coincidence is just being careful and lucky
 
 The league calculates the points for every team using the following equation (three points for a win, one for a draw, and none for losses or goals scored/conceded):
 
 point = 3W + 1D + 0L + 0GF + 0GA
 
-It also employs tiebreaks when two or more teams have the same points. Goal difference (GF minus GA) is taken into account as the first tiebreak. If the teams are still tied, GF is taken into account.
+It also employs tiebreaks when two or more teams have the same points. Goal difference (GF minus GA) is the first tiebreak. If the teams are still tied, GF is taken into account.
 
-The PC1 score equation resembles this ranking criteria. This happens for two reasons:
+The PC1 score equation resembles this ranking criterion. This happens partly for two reasons:
 
-*(i)* We've been careful while choosing the columns on which we performed the PCA. If we decided to use data columns such as mean home stadium attendance or mean grass length on the training ground, the PCs wouldn't make sense when it comes to predicting the final standings.
+(i) We've been careful while picking the columns on which we performed the PCA. If we decided to use data columns such as mean home stadium attendance or mean grass length on the training pitch, the PCs wouldn't make much sense when it comes to predicting the final standings. We also didn't leave out any necessary column.
 
-*(ii)* We're lucky that the league uses a linear combination of columns as the ranking criteria. If they used a system that's something like the one below, we'd have run into trouble, as PCA can only linearly combine the columns.
+(ii) We're lucky that the league uses a linear combination of columns as the ranking criteria. If they used a system that's something like the one below, we'd have run into trouble, as PCA can only linearly combine the columns.
 
 point = 3W^3 + 1D^2 + ...
 
-But why does 
+But the resemblance is still uncanny. Why would the direction of maximum variance be such a good predictor of the league standings?
 
+We've actually figured out the fundamentals of league football. To repeat our observations from the biplot: since the number of matches is fixed, more W essentially means fewer L. Also -- on average -- to win games, you need to have a higher GF than GA. Humans deliberately decided to set this pattern as *the* ranking criterion: teams that score more goals and concede fewer, win more and lose less -- and are essentially *better*. We've sort of reverse-engineered this idea.
+
+By the way, this is us celebrating Mohun Bagan SG's title win:
+
+<img width="600" height="350" alt="MBSG" src="https://github.com/user-attachments/assets/04894d61-b0d1-4f48-a139-a24512ffeb28" />
