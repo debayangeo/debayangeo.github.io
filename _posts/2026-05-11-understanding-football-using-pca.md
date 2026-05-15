@@ -174,5 +174,3 @@ We've actually figured out the fundamentals of league football. To repeat our ob
 
 ### Epilogue
 
----
-**Tags:** {% for tag in page.tags %} `{{ tag }}` {% endfor %}
