@@ -2,16 +2,16 @@
 layout: post
 title: "A dumb introduction to league football and Principal Components Analysis (PCA)"
 date: 2026-05-11
-tags: [pca, football, isl]
+tags: [pca, environmental datasets, football, isl]
 ---
 
 ### Prologue
 
-This blog post works best for those who know nothing about league football. In fact, the less you know about how a football league works, the fewer preconceived notions you'll have about it, and the grander the outcomes of our statistical analysis would sound.
+This blog post works best for those who know nothing about league football (soccer). In fact, the less you know about how a football league works, the fewer preconceived notions you'll have about it, and the grander the outcomes of our statistical analysis would sound.
 
-But this post is not just about football leagues. In the end, it is for those who (like me) are starting to analyze multidimensional data (or, more simply, data with many columns). Let's get started by looking at our data.
+But this post is not just about football leagues. In the end, it is for those who (like me) are starting to analyze multidimensional datasets (or, more simply, datasets with many columns). Let's get started by looking at our dataset.
 
-### The ISL 2024-25 data
+### The ISL 2024-25 dataset
 
 The table below shows the outcomes of the 2024-25 season of the Indian Super League (ISL). The teams are arranged in alphabetical order of names.
 
@@ -47,11 +47,11 @@ Which team do you think won the ISL? The one with the most W? Or maybe, the one 
 
 Our goal here is to figure out the ranking criteria that the league committee uses to decide the final standings.
 
-### Getting the data ready
+### Getting the dataset ready
 
 There are 13 teams, and every team played 24 matches. Apart from the MP column (which is the same across all teams), we have six columns. Are all of them independent of each other?
 
-Well, at least one is not. GD is a linear combination of GF and GA, and we'll leave it for our further analysis. Thus, the (apparently) 5D independent data looks like:
+Well, at least one is not. GD is a linear combination of GF and GA, and we'll leave it for our further analysis. Thus, the (apparently) 5D independent dataset looks like:
 
 | Club                |   W |   D |   L |   GF |   GA |
 |:--------------------|----:|----:|----:|-----:|-----:|
@@ -104,7 +104,7 @@ Let's first look at the amount of variation in the ISL data our PCs capture. You
 
 <img width="600" height="350" alt="ScreePlot1" src="https://github.com/user-attachments/assets/477237be-7dd3-4202-bb5d-4273c46ce16e" />
 
-The first two PCs capture a little more than 90% of the variation. **In other words, most of the patterns in our data can be explained by just two lines, instead of five!** The remaining variance (<10%) is likely statistical noise and doesn't mean anything in real life, so we won't worry about it much.
+The first two PCs capture a little more than 90% of the variation. **In other words, most of the patterns in our dataset can be explained by just two lines, instead of five!** The remaining variance (<10%) is likely statistical noise and doesn't mean anything in real life, so we won't worry about it much.
 
 What are the PCs composed of? Seems like a weird question to ask: they are just lines depicting the direction of maximum variation, right? Why should they be "composed of" anything?
 
@@ -114,7 +114,7 @@ But every PC can also be thought of as a weighted linear combination of the five
 
 PC1 has a strong positive dependence on W and GF, and a strong negative dependence on L and GA. This is the strongest pattern in the league: on average, teams that score more goals and concede fewer, win more and lose less (note that the number of matches is fixed). Makes sense, right? PC1 discovers this pattern and clumps all of these four columns into a single PC.
 
-PC2 is heavily dominated by D, the only major leftover pattern in the data. In fact, PC2 -- by nature -- isn't much different from the D column of our dataset.
+PC2 is heavily dominated by D, the only major leftover pattern in the dataset. In fact, PC2 -- by nature -- isn't much different from the D column of our dataset.
 
 Another cool geometric way to look at the (i) mutual relationship between the columns, as well as (ii) their relationship to the PCs, is the biplot. The smaller the angle between the lines, the more positively correlated they are. Interestingly, L and GA are even more positively correlated than W and GF. As the angle increases to 90°, the correlation drops to zero. For example, GF and D are at about 90° and aren't correlated. As we go past 90°, the negative correlation goes up. Lines opposite to each other (or, in other words, at an angle of 180°) are perfectly negatively correlated. In our data, teams that win more lose less. Also note that the D arrow is aligned along PC2 and almost perpendicular to PC1; the others are aligned along PC1 but perpendicular to PC2.
 
@@ -122,7 +122,7 @@ Another cool geometric way to look at the (i) mutual relationship between the co
 
 ### Predicting the ISL champions
 
-That's what there is to PCA. It identifies correlations among the columns of the data (if any) and reduces the number of columns needed to describe the major patterns in the data. In our case, we have reduced the 5D ISL data to a more manageable 2D data. But do the first two PCs have any predictive ability? Can they predict who the champions were, and who finished at the bottom?
+That's what there is to PCA. It identifies correlations among the columns of the dataset (if any) and reduces the number of columns needed to describe the major patterns in the data. In our case, we have reduced the 5D ISL dataset to a more manageable 2D dataset. But do the first two PCs have any predictive ability? Can they predict who the champions were, and who finished at the bottom?
 
 The short answer is: not necessarily. PCA doesn't know how the league committee ranks the teams.
 
@@ -162,7 +162,7 @@ It also employs tiebreaks when two or more teams have the same points. Goal diff
 
 The PC1 score equation resembles this ranking criterion. This happens partly for two reasons:
 
-(i) We've been careful while picking the columns on which we performed the PCA. If we decided to use data columns such as mean home stadium attendance or mean grass length on the training pitch, the PCs wouldn't make much sense when it comes to predicting the final standings. We also didn't leave out any necessary column.
+(i) We've been careful while picking the columns on which we performed the PCA. If we decided to use dataset columns such as mean home stadium attendance or mean grass length on the training pitch, the PCs wouldn't make much sense when it comes to predicting the final standings. We also didn't leave out any necessary column.
 
 (ii) We're lucky that the league uses a linear combination of columns as the ranking criteria. If they used a system that's something like the one below, we'd have run into trouble, as PCA can only linearly combine the columns.
 
@@ -174,3 +174,6 @@ We've actually figured out the fundamentals of league football. To repeat our ob
 
 ### Epilogue
 
+Sometimes, nature is kind and "sets" the direction(s) of large variance(s) in environmental datasets as good predictors of a target variable of our choice.
+
+To put it simply, more often than not, variance in the real world isn't just "spread" -- it is a measure of the dominant physical forces/gradients. PCA -- albeit blindly -- finds that force. 
