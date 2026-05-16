@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A dumb introduction to league football and Principal Components Analysis (PCA)"
+title: "A dumb introduction to league football and Principal Component Analysis (PCA)"
 date: 2026-05-11
 tags: [pca, environmental datasets, football, isl]
 ---
@@ -91,16 +91,16 @@ The league table now looks like the one below. A value near 0.000 means it is cl
 
 ### PCA-ing
 
-Imagine a 5D space. It's not easy to imagine one, but we'll have to pretend that we can for a while. Each dimension of this 5D space is defined by an axis that corresponds to a column in our data, and each team is a data point. The idea is to draw lines through the data cloud along which the cloud is the widest, or, in other words, *varies* the most. These lines need to be orthogonal to each other so that they represent variations originating from completely independent factors. We call these lines Principal Components, or simply, PCs.
+Imagine a 5D space. It's not easy to imagine one, but we'll have to pretend that we can for a while. Each dimension of this 5D space is defined by an axis that corresponds to a column in our dataset, and each team is a data point. The idea is to draw lines through the data cloud along which the cloud is the widest, or, in other words, *varies* the most. These lines need to be orthogonal to each other so that they represent variations originating from completely independent factors. We call these lines Principal Components, or simply, PCs.
 
-PC1 depicts the direction along which the cloud is the widest, PC2 depicts the direction along which the cloud is the second-widest, and so on. Can you guess the directions along which the first two PCs might be oriented in the image below?
+PC1 depicts the direction along which the cloud is the widest, PC2 depicts the direction along which the cloud is the *second-widest*, and so on. Can you guess the directions along which the first two PCs might be oriented in the image below?
 
 <figure>
   <img width="600" height="350" alt="5DSpace" src="https://github.com/user-attachments/assets/2ed446df-1181-4e27-badc-527bd28bcf7b" />
   <figcaption align="center">This image is AI generated</figcaption>
 </figure>
 
-Let's first look at the amount of variation in the ISL data our PCs capture. You can think of the numbers on the y-axis as R-squared we commonly use in regression models.
+Let's first look at the amount of variation in the ISL dataset our PCs capture. You can think of the numbers on the y-axis as R-squared we commonly use in regression models.
 
 <img width="600" height="350" alt="ScreePlot1" src="https://github.com/user-attachments/assets/477237be-7dd3-4202-bb5d-4273c46ce16e" />
 
@@ -108,7 +108,7 @@ The first two PCs capture a little more than 90% of the variation. **In other wo
 
 What are the PCs composed of? Seems like a weird question to ask: they are just lines depicting the direction of maximum variation, right? Why should they be "composed of" anything?
 
-But every PC can also be thought of as a weighted linear combination of the five axes (or our five data columns). In fact, this is what PCA does: it calculates these weights automatically from our data. We call these weights "loadings". We'll now look at the recipe for the first two PCs.
+But every PC can also be thought of as a weighted linear combination of the five axes (or our five data columns). In fact, this is what PCA does: it calculates these weights automatically from our dataset. We call these weights "loadings". We'll now look at the recipe for the first two PCs.
 
 <img width="450" height="350" alt="LoadingsMatrix1" src="https://github.com/user-attachments/assets/5b5ffa4b-066a-407b-b532-38babc0cc36e" />
 
@@ -116,13 +116,13 @@ PC1 has a strong positive dependence on W and GF, and a strong negative dependen
 
 PC2 is heavily dominated by D, the only major leftover pattern in the dataset. In fact, PC2 -- by nature -- isn't much different from the D column of our dataset.
 
-Another cool geometric way to look at the (i) mutual relationship between the columns, as well as (ii) their relationship to the PCs, is the biplot. The smaller the angle between the lines, the more positively correlated they are. Interestingly, L and GA are even more positively correlated than W and GF. As the angle increases to 90°, the correlation drops to zero. For example, GF and D are at about 90° and aren't correlated. As we go past 90°, the negative correlation goes up. Lines opposite to each other (or, in other words, at an angle of 180°) are perfectly negatively correlated. In our data, teams that win more lose less. Also note that the D arrow is aligned along PC2 and almost perpendicular to PC1; the others are aligned along PC1 but perpendicular to PC2.
+Another cool geometric way to look at the (i) mutual relationship between the columns, as well as (ii) their relationship to the PCs, is the biplot. The smaller the angle between the lines, the more positively correlated they are. Interestingly, L and GA are even more positively correlated than W and GF. As the angle increases to 90°, the correlation drops to zero. For example, GF and D are at about 90° and aren't correlated. As we go past 90°, the negative correlation goes up. Lines opposite to each other (or, in other words, at an angle of 180°) are perfectly negatively correlated. In our dataset, teams that win more lose less. Also note that the D arrow is aligned along PC2 and almost perpendicular to PC1; the others are aligned along PC1 but perpendicular to PC2.
 
 <img width="600" height="350" alt="LoadingsBiplot1" src="https://github.com/user-attachments/assets/350fd335-1f24-43b5-9004-2a116730a671" />
 
 ### Predicting the ISL champions
 
-That's what there is to PCA. It identifies correlations among the columns of the dataset (if any) and reduces the number of columns needed to describe the major patterns in the data. In our case, we have reduced the 5D ISL dataset to a more manageable 2D dataset. But do the first two PCs have any predictive ability? Can they predict who the champions were, and who finished at the bottom?
+That's what there is to PCA. It identifies correlations among the dataset's columns (if any) and reduces the number of columns needed to describe the dataset's major patterns. In our case, we have reduced the 5D ISL dataset to a more manageable 2D dataset. But do the first two PCs have any predictive ability? Can they predict who the champions were, and who finished at the bottom?
 
 The short answer is: not necessarily. PCA doesn't know how the league committee ranks the teams.
 
@@ -152,13 +152,13 @@ We get the following table. I've also included the actual ISL standings in the l
 
 Wow, PC1 is very accurate at predicting the actual standings! Is this a mere coincidence? Yes and no. We were both careful and lucky.
 
-### Coincidence is just being careful and lucky
+### Is coincidence just being careful and lucky?
 
 The league calculates the points for every team using the following equation (three points for a win, one for a draw, and none for losses or goals scored/conceded):
 
 *point = 3W + 1D + 0L + 0GF + 0GA*
 
-It also employs tiebreaks when two or more teams have the same points. Goal difference (GF minus GA) is the first tiebreak. If the teams are still tied, GF is taken into account.
+It also uses tiebreakers when two or more teams have the same number of points. Goal difference (GF minus GA) is the first tiebreak. If the teams are still tied, GF is taken into account.
 
 The PC1 score equation resembles this ranking criterion. This happens partly for two reasons:
 
@@ -176,4 +176,4 @@ We've actually figured out the fundamentals of league football. To repeat our ob
 
 Sometimes, nature is kind and "sets" the direction(s) of large variance(s) in environmental datasets as good predictors of a target variable of our choice.
 
-To put it simply, more often than not, variance in the real world isn't just "spread" -- it is a measure of the dominant physical forces/gradients. PCA -- albeit blindly -- finds that force. 
+To put it simply, more often than not, variance in the real world isn't just "spread" -- it is a measure of the dominant physical forces/gradients. PCA -- albeit blindly -- finds that force. We can use this to search for linear relationships between smartly chosen environmental predictors and a target.
